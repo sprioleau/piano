@@ -5,17 +5,20 @@
 }
 
 :root {
-  --black: #222;
-  --black-hover: #4a254a;
+  --black: #381d3b;
+  --black-hover: #111;
   --white: #fcf8ee;
-  --white-hover: #dad1bb;
+  --white-hover: #e7dec7;
+  --piano-color: #350b83;
+  --ui-bg: #5e00ca;
   --corner-radius: 0.5em;
   --gap: 0.5em;
+  --hue-rotate: 0deg;
 }
 
 body {
   min-height: 100vh;
-  background: blueviolet;
+  background: var(--ui-bg);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,10 +37,13 @@ body {
   display: flex;
   flex-direction: column;
   margin: 1em;
-  width: 80vmax;
+  width: 80vw;
   aspect-ratio: 3 / 1;
-  background-color: var(--black);
+  background-color: var(--piano-color);
   border-radius: calc(2 * var(--corner-radius));
+  user-select: none;
+  filter: hue-rotate(var(--hue-rotate));
+  transition: filter 0.5s ease;
 }
 
 .keyboard {
@@ -45,7 +51,6 @@ body {
   position: relative;
   height: 100%;
   margin-bottom: var(--gap);
-  isolation: isolate;
 }
 
 .keys {
@@ -57,13 +62,15 @@ body {
   bottom: 0;
   left: var(--x-inset);
   right: var(--x-inset);
-  overflow: hidden;
 }
 
 .key {
   width: 100%;
   border-bottom-left-radius: var(--corner-radius);
   border-bottom-right-radius: var(--corner-radius);
+  appearance: none;
+  box-shadow: none;
+  border: 0;
 }
 
 .key:hover {

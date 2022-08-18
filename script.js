@@ -1,5 +1,8 @@
+const piano = document.querySelector(".piano");
 const blackKeys = document.querySelectorAll(".black .key:not(.blank)");
 const whiteKeys = document.querySelectorAll(".white .key");
+
+let hueRotate = 300;
 
 const pianoKeys = {
   black: blackKeys,
@@ -11,20 +14,29 @@ const numberToKeyMap = {
   white: [ "C", "D", "E", "F", "G", "A", "B", "C", "D", "E", "F", "G", "A", "B", ]
 }
 
-function playKey(filename) {
-  const audio = new Audio(`sounds/${filename}`);
-  audio.play();
+const sounds = {
+  black: {},
+  white: {},
+};
+
+function playKey(color, i) {
+  const sound = sounds[color][i];
+  sound.currentTime = 0;
+  sound.play();
 }
 
 function addListeners() {
   Object.keys(pianoKeys).forEach((color) => {
     pianoKeys[color].forEach((key, i) => {
-      const filename = `${numberToKeyMap[color][i]}.mp3`
-      key.addEventListener("click", () => playKey(filename))
+      sounds[color][`${i}`] = new Audio(`sounds/${numberToKeyMap[color][i]}.mp3`);
+
+      ["touchstart", "click"].forEach((event) => {
+        key.addEventListener(event, () => playKey(color, i));
+      })
     })
   });
 }
 
-(function init() {
-  addListeners();
-})()
+
+
+(() => addListeners())()
