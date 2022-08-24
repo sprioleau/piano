@@ -50,7 +50,6 @@ body {
   display: flex;
   position: relative;
   height: 100%;
-  margin-bottom: var(--gap);
 }
 
 .keys {
@@ -59,7 +58,7 @@ body {
   display: flex;
   gap: var(--gap);
   top: var(--x-inset);
-  bottom: 0;
+  bottom: var(--x-inset);
   left: var(--x-inset);
   right: var(--x-inset);
 }
