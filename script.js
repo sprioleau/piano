@@ -1,12 +1,9 @@
-const piano = document.querySelector(".piano");
-const blackKeys = document.querySelectorAll(".black .key:not(.blank)");
-const whiteKeys = document.querySelectorAll(".white .key");
-
 let hueRotate = 300;
+let mouseIsDown = false;
 
 const pianoKeys = {
-  black: blackKeys,
-  white: whiteKeys
+  black: document.querySelectorAll(".black .key:not(.blank)"),
+  white: document.querySelectorAll(".white .key"),
 }
 
 const numberToKeyMap = {
@@ -29,14 +26,22 @@ function addListeners() {
   Object.keys(pianoKeys).forEach((color) => {
     pianoKeys[color].forEach((key, i) => {
       sounds[color][`${i}`] = new Audio(`sounds/${numberToKeyMap[color][i]}.mp3`);
+        
+      key.addEventListener("mousedown", () => {
+        mouseIsDown = true;
+        playKey(color, i);
+      });
 
-      ["touchstart", "click"].forEach((event) => {
-        key.addEventListener(event, () => playKey(color, i));
-      })
+      key.addEventListener("mouseenter", () => {
+        if (!mouseIsDown) return;
+        playKey(color, i);
+      });
+      
+      key.addEventListener("mouseup", () => {
+        mouseIsDown = false;
+      });
     })
   });
 }
 
-
-
-(() => addListeners())()
+(() => addListeners())();
