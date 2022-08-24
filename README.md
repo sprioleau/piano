@@ -1,4 +1,3 @@
-
 ![Social Card][social-card-url]
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/6ad63b06-bd9e-4b49-be7f-f24e932bb7f0/deploy-status)](https://app.netlify.com/sites/piano-tunes/deploys)
@@ -10,10 +9,6 @@ A piano made with HTML, CSS and JavaScript
 ## 🔗 Links
 
 - 🚀 Deployed at [piano-tunes.netlify.app][deployed-url]
-
-## Screenshots
-
-![Homepage Screenshot][homepage-screenshot-url]
 
 ## 🛠 Built With
 
