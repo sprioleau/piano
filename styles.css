@@ -5,12 +5,14 @@
 }
 
 :root {
-  --black: #381d3b;
-  --black-hover: #111;
-  --white: #fcf8ee;
-  --white-hover: #e7dec7;
-  --piano-color: #350b83;
-  --ui-bg: #5e00ca;
+  --black: hsl(293, 35%, 15%);
+  --black-hover: hsl(293, 35%, 10%);
+  --black-pressed: hsl(293, 10%, 0%);
+  --white: hsl(43, 70%, 96%);
+  --white-hover: hsl(43, 40%, 84%);
+  --white-pressed: hsl(43, 40%, 70%);
+  --piano-color: hsl(261, 85%, 28%);
+  --ui-bg: hsl(268, 100%, 40%);
   --corner-radius: 0.5em;
   --gap: 0.5em;
   --hue-rotate: 0deg;
@@ -27,6 +29,7 @@ body {
   justify-content: center;
   align-items: center;
   cursor: none; /* disable cursor */
+  overscroll-behavior: none;
 }
 
 .label {
@@ -96,6 +99,10 @@ body {
   background-color: var(--black-hover);
 }
 
+.black .key:active {
+  background-color: var(--black-pressed);
+}
+
 .blank {
   opacity: 0;
   pointer-events: none;
@@ -111,6 +118,10 @@ body {
 
 .white .key:hover {
   background-color: var(--white-hover);
+}
+
+.white .key:active {
+  background-color: var(--white-pressed);
 }
 
 .white .key:first-child {

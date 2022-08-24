@@ -1,11 +1,11 @@
 let hueRotate = 300;
 let mouseIsDown = false;
+const handFadeOffset = 32;
 
 const root = document.querySelector(":root");
 const hand = document.querySelector(".hand");
-const vw = (window.innerWidth / 100);
-const vh = (window.innerHeight / 100);
-const handFadeOffset = getComputedStyle(root).getPropertyValue("--hand-size").split("vw")[0] / 2;
+
+const { innerWidth: width, innerHeight: height } = window;
 
 const pianoKeys = {
   black: document.querySelectorAll(".black .key:not(.blank)"),
@@ -50,11 +50,9 @@ function addListeners() {
       window.addEventListener("mousemove", (event) => {
         const { clientX: x, clientY: y } = event;
 
-        const isOutsideXBoundary = x < vw * handFadeOffset || x > (100 - handFadeOffset) * vw;
-        console.log('handFadeOffset:', handFadeOffset)
-        const isOutsideYBoundary = y < vh * handFadeOffset || y > (100 - handFadeOffset) * vh;
+        const isOutsideXBoundary = x < handFadeOffset || x > (width - handFadeOffset);
+        const isOutsideYBoundary = y < handFadeOffset || y > (height - handFadeOffset);
         const shouldHideHand = isOutsideXBoundary || isOutsideYBoundary;
-        console.log('shouldHideHand:', shouldHideHand)
         
         shouldHideHand
           ? hand.classList.add("hide")
