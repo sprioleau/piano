@@ -38,6 +38,7 @@ body {
   color: var(--white);
   font-family: Avenir;
   text-align: center;
+  padding-top: 0.125em;
 }
 
 .piano {
@@ -64,7 +65,7 @@ body {
   position: absolute;
   display: flex;
   gap: var(--gap);
-  top: var(--x-inset);
+  top: calc(var(--x-inset) / 4);
   bottom: var(--x-inset);
   left: var(--x-inset);
   right: var(--x-inset);
